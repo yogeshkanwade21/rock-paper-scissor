@@ -29,7 +29,27 @@
         Scissor
         </button>
     </div>
+    <div class="reset">
+        <button
+            class="resetButton"
+            onclick="resetScore();"
+        >
+            Reset Score
+        </button>
+    </div>
     <script>
+
+        const score = {
+            wins : 0,
+            losses : 0,
+            ties : 0
+        };
+
+        function resetScore() {
+            score.wins = 0;
+            score.losses = 0;
+            score.ties = 0;
+        }
 
         function playGame(playerMove) {
             const computerMove = generateComputerMove();
@@ -44,9 +64,8 @@
                 else if (computerMove === 'scissor') {
                     result = 'You win';
                 }
-                alert(`You picked ${playerMove}! Computer picked ${computerMove}! Result: ${result}`);
             }
-            if (playerMove === 'paper') {
+            else if (playerMove === 'paper') {
                 if (computerMove === 'rock') {
                     result = 'You win';
                 }
@@ -56,9 +75,8 @@
                 else if (computerMove === 'scissor') {
                     result = 'You lose';
                 }
-                alert(`You picked ${playerMove}! Computer picked ${computerMove}! Result: ${result}`);
             }
-            if (playerMove === 'scissor') {
+            else if (playerMove === 'scissor') {
                 if (computerMove === 'rock') {
                     result = 'You lose';
                 }
@@ -68,8 +86,18 @@
                 else if (computerMove === 'scissor') {
                     result = 'tie';
                 }
-                alert(`You picked ${playerMove}! Computer picked ${computerMove}! Result: ${result}`);
             }
+            // update score
+            if (result === 'You win') {
+                score.wins += 1;
+            }
+            else if (result === 'You lose'){
+                score.losses += 1;
+            }
+            else if(result === 'tie'){
+                score.ties += 1;
+            }
+            alert(`You picked ${playerMove}! Computer picked ${computerMove}! Result: ${result} Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`);
         }
 
         function generateComputerMove() {
