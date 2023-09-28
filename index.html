@@ -29,6 +29,12 @@
         Scissor
         </button>
     </div>
+
+    <p id="game-result"></p>
+    <p id="game-moves"></p>
+    <p id="game-score"></p>
+    <p id="game-reset"></p>
+
     <div class="reset">
         <button
             class="resetButton"
@@ -45,11 +51,25 @@
             ties : 0
         };
 
+        function showScore() {
+            let gameScore = document.getElementById('game-score');
+            gameScore.innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`;
+        }
+
+        showScore();
+
         function resetScore() {
             localStorage.removeItem('score');
             score.wins = 0;
             score.losses = 0;
             score.ties = 0;
+            showScore();
+
+            let gameResult = document.getElementById('game-result');
+            gameResult.innerHTML = '';
+
+            let gameMoves = document.getElementById('game-moves');
+            gameMoves.innerHTML = '';
         }
 
         function playGame(playerMove) {
@@ -101,7 +121,13 @@
 
             localStorage.setItem('score', JSON.stringify(score));
 
-            alert(`You picked ${playerMove}! Computer picked ${computerMove}! Result: ${result} Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`);
+            let gameResult = document.getElementById('game-result');
+            gameResult.innerHTML = result;
+
+            let gameMoves = document.getElementById('game-moves');
+            gameMoves.innerHTML = `You picked ${playerMove}! Computer picked ${computerMove}!`;
+
+            showScore();
         }
 
         function generateComputerMove() {
