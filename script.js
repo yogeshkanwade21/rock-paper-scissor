@@ -9,8 +9,6 @@ function showScore() {
     gameScore.innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
 }
 
-showScore();
-
 function resetScore() {
     localStorage.removeItem('score');
     score.wins = 0;
@@ -23,6 +21,24 @@ function resetScore() {
 
     let gameMoves = document.getElementById('game-moves');
     gameMoves.innerHTML = '';
+}
+
+let intervalID;
+let isAutoPlaying = false;
+
+function autoPlay() {
+    if (!isAutoPlaying) {
+        intervalID = setInterval(() => {
+            const playerMove = generateComputerMove();
+            playGame(playerMove);
+        }, 1000);
+
+        isAutoPlaying = true;
+    }
+    else {
+        clearInterval(intervalID);
+        isAutoPlaying = false;
+    }
 }
 
 function playGame(playerMove) {
