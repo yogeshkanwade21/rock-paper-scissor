@@ -61,3 +61,18 @@ body {
 #autoPlay-Button{
     margin-left: 15px;
 }
+
+.instructions {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 15px;
+    border: 1px solid rgb(105, 105, 105);
+}
+
+.points {
+    font-size: 14px;
+    list-style-type: none;
+    padding-right: 30px;
+    line-height: 1.4em;
+}
