@@ -121,3 +121,45 @@ function generateComputerMove() {
     }
     return computerMove;
 }
+
+window.onload=function(){
+    const Rock = document.getElementById('move-button-rock');
+    Rock.addEventListener('click', () => {
+        playGame('Rock');
+    });
+    const Paper = document.getElementById('move-button-paper');
+    Paper.addEventListener('click', () => {
+        playGame('Paper');
+    });
+    const Scissor = document.getElementById('move-button-scissor');
+    Scissor.addEventListener('click', () => {
+        playGame('Scissor');
+    });
+    const Reset = document.getElementById('reset-Button');
+    Reset.addEventListener('click', () => {
+        resetScore();
+    });
+    const autoPlayBtn = document.getElementById('autoPlay-Button');
+    autoPlayBtn.addEventListener('click', () => {
+        autoPlay();
+    });
+
+    document.body.addEventListener('keydown', (e) => {
+        // console.log(e.key);
+        if (e.key === 'r' || e.key === 'R') {
+            playGame('Rock');
+        }
+        else if (e.key === 'p' || e.key === 'P') {
+            playGame('Paper');
+        }
+        else if (e.key === 's' || e.key === 'S') {
+            playGame('Scissor');
+        }
+        else if (e.key === 'a' || e.key === 'A'){
+            autoPlay();
+        }
+        else if (e.key === 'c' || e.key === 'C'){
+            resetScore();
+        }
+    })
+}

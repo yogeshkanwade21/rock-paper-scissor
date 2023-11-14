@@ -14,19 +14,19 @@
     <div class="box">
         <button
             class="move-button"
-            onclick="playGame('Rock');"
+            id="move-button-rock"
         >
             <img class="move-icon" src="./images/Rock-emoji.png" alt="Rock">
         </button>
         <button
             class="move-button"
-            onclick="playGame('Paper');"
+            id="move-button-paper"
         >
         <img class="move-icon" src="./images/Paper-emoji.png" alt="Paper">
         </button>
         <button
             class="move-button"
-            onclick="playGame('Scissor');"
+            id="move-button-scissor"
         >
         <img class="move-icon" src="./images/Scissor-emoji.png" alt="Scissor">
         </button>
@@ -41,13 +41,11 @@
         <div class="game-buttons">
             <button
                 id="reset-Button"
-                onclick="resetScore();"
             >
                 Reset Score
             </button>
             <button
                 id="autoPlay-Button"
-                onclick="autoPlay();"
             >
                 Auto Play / Stop
             </button>
