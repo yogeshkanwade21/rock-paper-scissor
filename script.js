@@ -33,10 +33,12 @@ function autoPlay() {
             playGame(playerMove);
         }, 1000);
 
+        document.getElementById('autoPlay-Button').innerHTML = 'Pause';
         isAutoPlaying = true;
     }
     else {
         clearInterval(intervalID);
+        document.getElementById('autoPlay-Button').innerHTML = 'Auto Play';
         isAutoPlaying = false;
     }
 }
